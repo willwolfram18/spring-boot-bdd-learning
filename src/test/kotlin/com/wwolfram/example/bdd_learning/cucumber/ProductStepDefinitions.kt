@@ -6,7 +6,7 @@ import com.wwolfram.example.bdd_learning.controllers.*
 import com.wwolfram.example.bdd_learning.models.*
 import io.cucumber.java.*
 import io.cucumber.java.en.*
-import io.cucumber.spring.*
+import io.cucumber.spring.CucumberContextConfiguration
 import io.kotest.matchers.*
 import io.kotest.matchers.nulls.*
 import org.springframework.beans.factory.annotation.*
@@ -24,7 +24,7 @@ class ProductStepDefinitions @Autowired constructor(
     private var action: ResultActionsDsl? = null
 
     @ParameterType(".*")
-    fun uri(uri: String) = URI(uri)
+    fun uri(uri: String): URI = URI(uri)
 
     @When("the client calls {uri}")
     fun `WHEN the client calls GET products`(uri: URI) {
