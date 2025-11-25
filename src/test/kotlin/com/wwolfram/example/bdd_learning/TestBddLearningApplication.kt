@@ -1,7 +1,6 @@
 package com.wwolfram.example.bdd_learning
 
-import org.springframework.boot.fromApplication
-import org.springframework.boot.with
+import org.springframework.boot.*
 
 
 fun main(args: Array<String>) {

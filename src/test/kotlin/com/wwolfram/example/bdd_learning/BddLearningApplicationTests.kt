@@ -1,8 +1,8 @@
 package com.wwolfram.example.bdd_learning
 
-import org.junit.jupiter.api.Test
-import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.context.annotation.Import
+import org.junit.jupiter.api.*
+import org.springframework.boot.test.context.*
+import org.springframework.context.annotation.*
 
 @Import(TestcontainersConfiguration::class)
 @SpringBootTest
