@@ -6,7 +6,7 @@ import com.wwolfram.example.bdd_learning.controllers.*
 import com.wwolfram.example.bdd_learning.models.*
 import io.cucumber.java.*
 import io.cucumber.java.en.*
-import io.cucumber.spring.CucumberContextConfiguration
+import io.cucumber.spring.*
 import io.kotest.matchers.*
 import io.kotest.matchers.nulls.*
 import org.springframework.beans.factory.annotation.*
@@ -46,5 +46,13 @@ class ProductStepDefinitions @Autowired constructor(
         val responseEntity = objectMapper.readValue<Product>(responseContent)
 
         responseEntity.name shouldBe "Test product"
+    }
+
+    @Then("the client receives product named {string}")
+    fun `THEN the client receives product with name`(name: String) {
+        val responseContent = action.shouldNotBeNull().andReturn().response.contentAsString
+        val responseEntity = objectMapper.readValue<Product>(responseContent)
+
+        responseEntity.name shouldBe name
     }
 }
