@@ -1,24 +1,25 @@
 package com.wwolfram.example.bdd_learning.controllers
 
 import com.wwolfram.example.bdd_learning.models.*
+import com.wwolfram.example.bdd_learning.services.*
+import kotlinx.coroutines.*
 import org.springframework.web.bind.annotation.*
 
 @RestController
-class ProductController {
-    companion object {
-        val products = mapOf(
-            "1" to Product("First product"),
-            "2" to Product("Second product")
-        )
-    }
-
+class ProductController(
+    private val productService: ProductService
+) {
     @GetMapping("/products")
     fun getProduct(): Product {
-        return Product("Test product")
+        return runBlocking {
+            productService.getAllProducts().first()
+        }
     }
 
     @GetMapping("/products/{id}")
     fun getProductById(@PathVariable id: String): Product {
-        return products.getOrDefault(id, Product("UNKNOWN"))
+        return runBlocking {
+            productService.getProduct(id)
+        }
     }
 }
