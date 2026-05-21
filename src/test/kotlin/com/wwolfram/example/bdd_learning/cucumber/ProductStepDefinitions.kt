@@ -15,8 +15,6 @@ import org.springframework.http.*
 import org.springframework.test.web.servlet.*
 import java.net.*
 
-@CucumberContextConfiguration
-@WebMvcTest(ProductController::class)
 class ProductStepDefinitions @Autowired constructor(
     private val mvc: MockMvc,
     private val objectMapper: ObjectMapper
